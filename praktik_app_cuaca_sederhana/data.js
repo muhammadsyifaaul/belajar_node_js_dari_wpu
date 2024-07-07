@@ -26,11 +26,27 @@ async function getWetherCondotion(location) {
         if (!res.data) {
             throw new Error("Failed to get weather information");
         }
-        console.log(res.data)
+
         console.log(`
-            last update : ${res.data.current.last_updated} Local Time
-            temperature : ${res.data.current.temp_c}°C
-            condition : ${res.data.current.condition.text}
+        last update : ${res.data.current.last_updated} Local Time
+        temperature : ${res.data.current.temp_c}°C
+        condition : ${res.data.current.condition.text}
+            `); 
+    } catch (error) {
+        console.error("Error getting weather conditions:", error.message);
+    }
+}
+async function searchSpecificPlace(location) {
+    try {
+        const res = await axios.get(`${urlForWeather}&q=${location}`);
+        if (!res.data) {
+            throw new Error("Failed to get weather information");
+        }
+        console.log(`You searching for ${location}`)
+        console.log(`
+        last update : ${res.data.current.last_updated} Local Time
+        temperature : ${res.data.current.temp_c}°C
+        condition : ${res.data.current.condition.text}
             `); 
     } catch (error) {
         console.error("Error getting weather conditions:", error.message);
@@ -38,5 +54,6 @@ async function getWetherCondotion(location) {
 }
 
 module.exports = {
-    getUserLocation
+    getUserLocation,
+    searchSpecificPlace
 }
