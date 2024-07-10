@@ -5,7 +5,7 @@ const expressLayouts = require('express-ejs-layouts');
 
 
 const port = 3000;
-app.use(express.static('img'));
+app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
 
