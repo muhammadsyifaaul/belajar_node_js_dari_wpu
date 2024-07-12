@@ -1,0 +1,19 @@
+<form class="d-flex justify-content-center align-items-baseline">
+    <div class="mb-3 mt-5">
+      <input type="text" class="form-control search-input" id="title" placeholder="search note" width="300px">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <a href="/add-note" class="btn btn-success badge">Add Notes</a>
+  <div class="row ">
+    <div class="col-md-4 ">
+      <% notes.forEach(note => { %>
+        <ul class="list-group mt-4 ">
+          <li class="list-group-item"><a href="/<%= note.title %>"><%= note.title %></a></li>
+          <li class="list-group-item"><%= note.date %></li>
+          
+        </ul>
+      <% }) %>
+    </div>
+  </div>
+  
