@@ -1,6 +1,6 @@
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts')
-const {loadNotes, addNote,findNote,updateNote} = require('./utils/notes');
+const {loadNotes, addNote,findNote,updateNote,deleteNote} = require('./utils/notes');
 
 const app = express();
 const port = 3000
@@ -54,7 +54,12 @@ app.get('/:title', (req, res) => {
       note
     });
   });
-  
+ 
+app.get('/delete/:title',(req,res) => {
+    const title = req.params.title
+    deleteNote(title)
+    res.redirect('/')
+})
 
 app.get('/update/:title',(req,res) => {
     const note = findNote(req.params.title)

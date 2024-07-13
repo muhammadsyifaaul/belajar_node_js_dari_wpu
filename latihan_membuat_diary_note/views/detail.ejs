@@ -10,7 +10,12 @@
             </textarea>
           </li>
           
-          <a href="/update/<%= note.title %>" class="btn btn-primary badge">Edit</a>
+          <div>
+            <a href="/update/<%= note.title %>" class="btn btn-primary badge">Edit</a>
+          </div>
+          <div>
+            <a href="/delete/<%= note.title %>" class="btn btn-danger badge" onclick="return confirm('yakin?')">Delete</a>
+          </div>
         </ul>
 
     </div>
