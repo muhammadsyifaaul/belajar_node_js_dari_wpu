@@ -6,7 +6,7 @@
   </form>
   <a href="/add-note" class="btn btn-success badge">Add Notes</a>
   <div class="row ">
-    <div class="col-md-4 ">
+    <div class="col-md-10 d-flex flex-wrap gap-5">
       <% notes.forEach(note => { %>
         <ul class="list-group mt-4 ">
           <li class="list-group-item"><a href="/<%= note.title %>"><%= note.title %></a></li>

@@ -1,10 +1,16 @@
 <form method="post">
     <div class="mb-3">
-        <input type="hidden" name="oldTitle">
+        <input type="hidden" name="oldTitle" value="<%= note.title %>">
       <label for="title" class="form-label">Title notes</label>
       <input type="text" class="form-control" id="title" name="title" value="<%= note.title %>">
       
     </div>
+    <% 
+    const today = new Date();
+    const day = today.getDate();
+    const month = today.getMonth() + 1; 
+    const year = today.getFullYear();  %>
+    <input type="hidden" name="date" value="<%= note.date = `${year}-${month}-${day}` %>">
     <div class="mb-3 d-flex flex-column">
       <label for="note" class="form-label">Your note</label>
       <textarea name="note" id="note" cols="100" rows="20" > <%= note.note %></textarea>

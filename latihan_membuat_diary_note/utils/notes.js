@@ -21,20 +21,19 @@ const findNote = (data) => {
     const note = notes.find(note => note.title.toLowerCase() === data.toLowerCase())
     return note
 }
-const updateNote = (oldTitle, newTitle, newNote) => {
-    const notes = loadNotes();
-    const today = new Date();
-    const day = today.getDate();
-    const month = today.getMonth() + 1; 
-    const year = today.getFullYear(); 
-    const index = notes.findIndex(note => note.title.toLowerCase() === oldTitle.toLowerCase());
-    if (index !== -1) {
-        notes[index] = { title: newTitle,date: `${year}-${month}-${day}`, note: newNote };
-        saveNotes(notes);
-        return notes[index];
-    }
-    
-    return null;
+const updateNote = (noteBaru) => {
+    const notes = loadNotes()
+    // const index = notes.findIndex(note => note.title.toLowerCase() === oldTitle.toLowerCase());
+    // if (index !== -1) {
+    //     notes[index] = { title: newTitle,date: `${year}-${month}-${day}`, note: newNote };
+    //     saveNotes(notes);
+    //     return notes[index];
+    // }
+    // const note = notes.filter(note => note.title.toLowerCase() !== oldTitle)
+    const filteredNote = notes.filter(note => note.title.toLowerCase() !== noteBaru.oldTitle.toLowerCase())
+    delete noteBaru.oldTitle
+    filteredNote.push(noteBaru)
+    saveNotes(filteredNote)
 };
 
 module.exports = {loadNotes,addNote,findNote,updateNote}

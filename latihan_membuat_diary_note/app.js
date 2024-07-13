@@ -43,14 +43,18 @@ app.post('/add-note',(req,res) => {
     addNote(newNote)
     res.redirect('/')
 })
-app.get('/:title',(req,res) => {
-    const note = findNote(req.params.title)
-    res.render('detail',{
-        layout: 'layouts/main-layout',
-      title:'detail note',
+app.get('/:title', (req, res) => {
+    const note = findNote(req.params.title);
+    if (!note) {
+      return res.status(404).send('Note not found');
+    }
+    res.render('detail', {
+      layout: 'layouts/main-layout',
+      title: 'Detail Note',
       note
-    })
-})
+    });
+  });
+  
 
 app.get('/update/:title',(req,res) => {
     const note = findNote(req.params.title)
@@ -61,14 +65,17 @@ app.get('/update/:title',(req,res) => {
     })
 })
 app.post('/update/:title',(req,res) => {
-    const { oldTitle,title, note } = req.body;
-    const updatedNote = updateNote(oldTitle, title, note);
-    if (updatedNote) {
-        res.send('Note updated successfully');
-    } else {
-        res.status(404).send('Note not found');
-    }
+    // const { oldTitle,title, note } = req.body;
+    // const updatedNote = updateNote(oldTitle, title, note);
+    // if (updatedNote) {
+    //     res.send('Note updated successfully');
+    // } else {
+    //     res.status(404).send('Note not found');
+    // }
+    const notes = req.body
+    updateNote(notes)
     res.redirect('/')
+    // res.redirect('/')
 })
 
 
