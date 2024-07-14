@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <% if (comment) { %>
+        <h1>Comment id : <%= comment.id %></h1>
+        <h1>Comment text : <%= comment.text %> - <%= comment.username %></h1>
+    <% } else { %>
+        <h1>Comment not found</h1>
+    <% } %>
+    <a href="/comments">Back</a>
+</body>
+</html>
